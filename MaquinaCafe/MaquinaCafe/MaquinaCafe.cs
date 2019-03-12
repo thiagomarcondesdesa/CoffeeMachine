@@ -20,9 +20,10 @@ namespace MaquinaCafe
             this.ValorInserido = ValorInserido;
         }
 
-        public MaquinaCafe(double ValorCafe)
+
+        public MaquinaCafe()
         {
-            this.ValorCafe = ValorCafe;
+            this.ValorCafe = 0.00;
             this.QtdeCafesVendeidos = 0;
             this.ValorInserido = 0.00;
         }
@@ -30,6 +31,21 @@ namespace MaquinaCafe
         public double ValorCafe { get => _ValorCafe; set => _ValorCafe = value; }
         public int QtdeCafesVendeidos { get => _QtdeCafesVendeidos; set => _QtdeCafesVendeidos = value; }
         public double ValorInserido { get => _ValorInserido; set => _ValorInserido = value; }
+
+
+        public void IniciarMaquina(double ValorCafe)
+        {
+            this.ValorCafe = ValorCafe;
+            this.QtdeCafesVendeidos = 0;
+            this.ValorInserido = 0.00;
+        }
+
+    
+        public void InserirMoeda(double ValorInserido)
+        {
+            this.ValorInserido += ValorInserido;
+        }
+
 
 
     }
