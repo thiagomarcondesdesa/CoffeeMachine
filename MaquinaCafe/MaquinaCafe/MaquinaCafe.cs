@@ -9,44 +9,103 @@ namespace MaquinaCafe
     class MaquinaCafe
     {
 
-         double _ValorCafe;
-         int _QtdeCafesVendeidos;
-         double _ValorInserido;
-
-        public MaquinaCafe(double ValorCafe, int QtdeCafesVendeidos, double ValorInserido)
-        {
-            this.ValorCafe = ValorCafe;
-            this.QtdeCafesVendeidos = QtdeCafesVendeidos;
-            this.ValorInserido = ValorInserido;
-        }
-
+        double _ValorCafe;
+        int _QtdeCafesVendeidos;
+        double _ValorInserido;
+        bool _status;
 
         public MaquinaCafe()
         {
-            this.ValorCafe = 0.00;
-            this.QtdeCafesVendeidos = 0;
-            this.ValorInserido = 0.00;
+            ValorCafe = 0.00;
+            QtdeCafesVendeidos = 0;
+            ValorInserido = 0.00;
+            Status = false;
+        }
+
+        public MaquinaCafe(double ValorCafe, int QtdeCafesVendeidos, double ValorInserido, bool status)
+        {
+            _ValorCafe = ValorCafe;
+            _QtdeCafesVendeidos = QtdeCafesVendeidos;
+            _ValorInserido = ValorInserido;
+            _status = status;
         }
 
         public double ValorCafe { get => _ValorCafe; set => _ValorCafe = value; }
         public int QtdeCafesVendeidos { get => _QtdeCafesVendeidos; set => _QtdeCafesVendeidos = value; }
         public double ValorInserido { get => _ValorInserido; set => _ValorInserido = value; }
+        public bool Status { get => _status; set => _status = value; }
 
-
-        public void IniciarMaquina(double ValorCafe)
+        public void IniciarMaquina(double valorCafe)
         {
-            this.ValorCafe = ValorCafe;
-            this.QtdeCafesVendeidos = 0;
-            this.ValorInserido = 0.00;
+            ValorCafe = valorCafe;
+            QtdeCafesVendeidos = 0;
+            ValorInserido = 0.00;
+            Status = true;
+        }
+
+        public void DesligarMaquina()
+        {
+            ValorCafe = 0.00;
+            QtdeCafesVendeidos = 0;
+            ValorInserido = 0.00;
+            Status = false;
         }
 
     
-        public void InserirMoeda(double ValorInserido)
+        public bool InserirMoeda(double valorInserido)
         {
-            this.ValorInserido += ValorInserido;
+            if (EhMoeda(valorInserido))
+            {
+                ValorInserido += valorInserido;
+                return true;            
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
+        public bool ComprarCafe()
+        {
+            if (ValorInserido >= ValorCafe)
+            {
+                ValorInserido -= ValorCafe;
+                QtdeCafesVendeidos++;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
 
+        public bool RetirarTroco()
+        {
+            if (ValorInserido > 0)
+            {
+                ValorInserido = 0;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public double TotalArrecadado()
+        {
+            return (ValorCafe * QtdeCafesVendeidos);
+
+        }
+             
+
+        public bool EhMoeda(double valorInserido)
+        {
+            return ((valorInserido == 0.05) || (valorInserido == 0.10) || (valorInserido == 0.25) ||
+                    (valorInserido == 0.50) || (valorInserido == 1));
+        }
 
     }
 }

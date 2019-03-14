@@ -36,9 +36,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtValorInserido = new System.Windows.Forms.TextBox();
             this.txtPainel = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnInserirMoeda = new System.Windows.Forms.Button();
             this.txtvalor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnDesligar = new System.Windows.Forms.Button();
+            this.btnComprar = new System.Windows.Forms.Button();
+            this.btnTroco = new System.Windows.Forms.Button();
+            this.rtbRelatorio = new System.Windows.Forms.RichTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtValorCafe
@@ -53,7 +58,7 @@
             // btnIniciar
             // 
             this.btnIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIniciar.Location = new System.Drawing.Point(12, 195);
+            this.btnIniciar.Location = new System.Drawing.Point(12, 139);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(136, 40);
             this.btnIniciar.TabIndex = 1;
@@ -118,20 +123,20 @@
             this.txtPainel.Size = new System.Drawing.Size(443, 38);
             this.txtPainel.TabIndex = 8;
             // 
-            // button1
+            // btnInserirMoeda
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(319, 195);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 40);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Inserir Moeda";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnInserirMoeda.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInserirMoeda.Location = new System.Drawing.Point(168, 139);
+            this.btnInserirMoeda.Name = "btnInserirMoeda";
+            this.btnInserirMoeda.Size = new System.Drawing.Size(136, 40);
+            this.btnInserirMoeda.TabIndex = 9;
+            this.btnInserirMoeda.Text = "Inserir Moeda";
+            this.btnInserirMoeda.UseVisualStyleBackColor = true;
+            this.btnInserirMoeda.Click += new System.EventHandler(this.btnInserirMoeda_Click);
             // 
             // txtvalor
             // 
-            this.txtvalor.Location = new System.Drawing.Point(319, 170);
+            this.txtvalor.Location = new System.Drawing.Point(319, 159);
             this.txtvalor.Name = "txtvalor";
             this.txtvalor.Size = new System.Drawing.Size(100, 20);
             this.txtvalor.TabIndex = 10;
@@ -140,20 +145,77 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(316, 154);
+            this.label2.Location = new System.Drawing.Point(316, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "Informe o Valor:";
+            // 
+            // btnDesligar
+            // 
+            this.btnDesligar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesligar.Location = new System.Drawing.Point(12, 185);
+            this.btnDesligar.Name = "btnDesligar";
+            this.btnDesligar.Size = new System.Drawing.Size(136, 40);
+            this.btnDesligar.TabIndex = 12;
+            this.btnDesligar.Text = "Desligar";
+            this.btnDesligar.UseVisualStyleBackColor = true;
+            this.btnDesligar.Click += new System.EventHandler(this.btnDesligar_Click);
+            // 
+            // btnComprar
+            // 
+            this.btnComprar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnComprar.Location = new System.Drawing.Point(168, 185);
+            this.btnComprar.Name = "btnComprar";
+            this.btnComprar.Size = new System.Drawing.Size(136, 40);
+            this.btnComprar.TabIndex = 13;
+            this.btnComprar.Text = "Comprar";
+            this.btnComprar.UseVisualStyleBackColor = true;
+            this.btnComprar.Click += new System.EventHandler(this.btnComprar_Click);
+            // 
+            // btnTroco
+            // 
+            this.btnTroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTroco.Location = new System.Drawing.Point(319, 185);
+            this.btnTroco.Name = "btnTroco";
+            this.btnTroco.Size = new System.Drawing.Size(136, 40);
+            this.btnTroco.TabIndex = 14;
+            this.btnTroco.Text = "Retirar Troco";
+            this.btnTroco.UseVisualStyleBackColor = true;
+            this.btnTroco.Click += new System.EventHandler(this.btnTroco_Click);
+            // 
+            // rtbRelatorio
+            // 
+            this.rtbRelatorio.Location = new System.Drawing.Point(12, 282);
+            this.rtbRelatorio.Name = "rtbRelatorio";
+            this.rtbRelatorio.Size = new System.Drawing.Size(443, 96);
+            this.rtbRelatorio.TabIndex = 15;
+            this.rtbRelatorio.Text = "";
+            this.rtbRelatorio.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(12, 266);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(62, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Relatório:";
             // 
             // frmMaquinaCafe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(550, 390);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.rtbRelatorio);
+            this.Controls.Add(this.btnTroco);
+            this.Controls.Add(this.btnComprar);
+            this.Controls.Add(this.btnDesligar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtvalor);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnInserirMoeda);
             this.Controls.Add(this.txtPainel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtValorInserido);
@@ -179,9 +241,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtValorInserido;
         private System.Windows.Forms.TextBox txtPainel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnInserirMoeda;
         private System.Windows.Forms.TextBox txtvalor;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnDesligar;
+        private System.Windows.Forms.Button btnComprar;
+        private System.Windows.Forms.Button btnTroco;
+        private System.Windows.Forms.RichTextBox rtbRelatorio;
+        private System.Windows.Forms.Label label5;
     }
 }
 

@@ -18,13 +18,17 @@ namespace MaquinaCafe
         public frmMaquinaCafe()
         {
             InitializeComponent();
+            txtPainel.Text = "Máquina desligada...";
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            maquina1.IniciarMaquina(2.00);
-            CarregarDadosPainelMaquina();
-            txtPainel.Text = "Máquina Iniciada...";
+            if (!maquina1.Status)
+            {
+                maquina1.IniciarMaquina(2.00);
+                CarregarDadosPainelMaquina();
+                txtPainel.Text = "Máquina Iniciada...";
+            }
         }
 
         protected void CarregarDadosPainelMaquina()
@@ -40,13 +44,88 @@ namespace MaquinaCafe
             txtValorCafe.Text = "";
             txtQtdeVendida.Text = "";
             txtValorInserido.Text = "";
+            txtvalor.Text = "";
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+
+        private void btnDesligar_Click(object sender, EventArgs e)
         {
-            maquina1.InserirMoeda(double.Parse(txtvalor.Text));
-            CarregarDadosPainelMaquina();
-            txtPainel.Text = "Valor Inserido...";
+            if (maquina1.ValorInserido > 0)
+            {
+                txtPainel.Text = "Solicite o seu troco...";
+            }
+            else
+            {
+                if (maquina1.Status)
+                {
+                    rtbRelatorio.Text += "Quantidade de café(s) vendido(s).....:" + maquina1.QtdeCafesVendeidos.ToString() + "\n";
+                    rtbRelatorio.Text += "Valor Total dos café(s) vendido(s)...:" + maquina1.TotalArrecadado().ToString("C") + "\n";
+                    maquina1.DesligarMaquina();
+                    CarregarDadosPainelMaquina();
+                    txtPainel.Text = "Máquina desligada...";
+
+                }
+            }
+        }
+
+        private void btnInserirMoeda_Click(object sender, EventArgs e)
+        {
+            if (!maquina1.Status)
+            {
+                txtPainel.Text = "Máquina desligada...";
+            }
+            else
+            {
+                if (txtvalor.Text != "")
+                {
+                    if (maquina1.InserirMoeda(double.Parse(txtvalor.Text)))
+                    {
+                        CarregarDadosPainelMaquina();
+                        txtPainel.Text = "Valor Inserido...";
+                        txtvalor.Text = "";
+                    }
+                    else
+                    {
+                        txtPainel.Text = "Insira uma moeda...";
+                    }
+                }
+                else
+                {
+                    txtPainel.Text = "Valor Incorreto...";
+                }
+            }
+        }
+
+        private void btnComprar_Click(object sender, EventArgs e)
+        {
+            if (maquina1.ComprarCafe())
+            {
+                CarregarDadosPainelMaquina();
+                txtPainel.Text = "Retire o café...";
+            }
+            else
+            {
+                txtPainel.Text = "O Valor do café é "+maquina1.ValorCafe.ToString("C")+"...";
+            }
+        }
+
+        private void btnTroco_Click(object sender, EventArgs e)
+        {
+            if (maquina1.RetirarTroco())
+            {
+                CarregarDadosPainelMaquina();
+                txtPainel.Text = "Retire o seu troco...";
+            }
+            else
+            {
+                txtPainel.Text = "Não existe troco...";
+            }
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
